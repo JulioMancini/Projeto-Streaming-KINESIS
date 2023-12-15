@@ -25,4 +25,18 @@ Import Jason
 cliente = boto3.cliente(‘kinesis’, aws_accesse_key_id=’chave’ ,aws_secret_ accesse_key= ‘chave secreta’
 region_name=’us-east-1’)
 ```
+Então a gente vai utilizar o método de Jason pro dump. A forma mais fácil de fazer isso é criar um objeto dicionário
+```bash
+registro = {‘ idvendedor’ : ‘999’, ‘nome’ : ‘Nelson’}
+```
+Para que eu possa produzir uma informação, eu tenho que chamar o método put record do meu cliente, que é um cliente do Kinesis, que vai autenticar lá na AWS, e o resultado deste método traz uma resposta, então posso fazer a leitura dessa resposta para saber se o processo foi bem sucedido.
 
+```bash
+Resposta = cliente.put_record(
+streamName = ‘stream1’, 
+Data = Jason.dumps(registro),
+Partitionkey’02’
+Print (resposta)
+```
+
+![4](https://github.com/JulioMancini/Projeto-Streaming-KINESIS/assets/145502330/b267f48a-6c00-4af9-9e28-39f4ec2a5931)
