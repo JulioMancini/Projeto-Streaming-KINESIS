@@ -65,7 +65,8 @@ while shard is nor None:
    print(registro[“SequenceNumber”])
    print(registro[“ApproximateArrivalTimestamp”])
    print(registro[“PartitionKey”])
-   print(registro[“Data”])```
+   print(registro[“Data”])
+```
 
 # TESTE VENDEDOR E CONSUMIDOR
 
@@ -73,5 +74,9 @@ while shard is nor None:
 
 ![5](https://github.com/JulioMancini/Projeto-Streaming-KINESIS/assets/145502330/10fba7cb-c818-4669-9313-5617fb908b9d)
 
+* Dado recebido no Notbook Produtor
 
- 
+![6](https://github.com/JulioMancini/Projeto-Streaming-KINESIS/assets/145502330/dc1fe771-c262-463e-be4e-69b96704f33d)
+
+# KINESES DELIVERY COM FIREHOUSE
+
