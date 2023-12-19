@@ -15,6 +15,8 @@ Primeiro passo é nomear o fluxo de dados. Deixei a capacidade sob demanda ativa
 
 Ao abrir o Jupyter Notebook, a primeira coisa que eu tenho que fazer é instalar o Boto 3
 
+* Nomear o NoteBook como Produtor, pu seja, nesse notbook que vamos inserir os dados
+
 ```bash
 !pip install boto3
 ```
@@ -32,11 +34,44 @@ registro = {‘ idvendedor’ : ‘999’, ‘nome’ : ‘Nelson’}
 Para que eu possa produzir uma informação, eu tenho que chamar o método put record do meu cliente, que é um cliente do Kinesis, que vai autenticar lá na AWS, e o resultado deste método traz uma resposta, então posso fazer a leitura dessa resposta para saber se o processo foi bem sucedido.
 
 ```bash
-Resposta = cliente.put_record(
+resposta = cliente.put_record(
 streamName = ‘stream1’, 
-Data = Jason.dumps(registro),
-Partitionkey’02’
-Print (resposta)
+Data = jason.dumps(registro),
+PartitionKey’02’
+print (resposta)
 ```
 
 ![4](https://github.com/JulioMancini/Projeto-Streaming-KINESIS/assets/145502330/b267f48a-6c00-4af9-9e28-39f4ec2a5931)
+
+# CRIANDO UM CONSUMIDOR
+
+*  Abrir outro notebook para criar o consumidor. aqui aparecera em stream os dados inseridos pelo produtor.
+
+```
+Import boto3
+cliente = boto3.cliente(‘kinesis’, aws_accesse_key_id=’chave’ ,aws_secret_ accesse_key= ‘chave secreta region_name=’us-east-1’)
+
+shard = cliente.get_shard_interator(
+           streamName=”stream1”,
+           shardid = ‘shardid-000000000002’,
+           shardIteratorType = ‘LATASTE’
+           )[ “shardIterator”]
+
+while shard is nor None:
+  resultado = cliente.get_records(shardIterator=shard)
+  registros = resultado [‘records’]
+  shard = resultado[“NextShardIterator”]
+  for registro in registros:
+   print(registro[“SequenceNumber”])
+   print(registro[“ApproximateArrivalTimestamp”])
+   print(registro[“PartitionKey”])
+   print(registro[“Data”])```
+
+# TESTE VENDEDOR E CONSUMIDOR
+
+* Inserindo novo vendedor no Notbook Produtor
+
+![5](https://github.com/JulioMancini/Projeto-Streaming-KINESIS/assets/145502330/10fba7cb-c818-4669-9313-5617fb908b9d)
+
+
+ 
