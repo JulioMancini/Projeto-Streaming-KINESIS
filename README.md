@@ -80,3 +80,19 @@ while shard is nor None:
 
 # KINESES DELIVERY COM FIREHOUSE
 
+Agora o objetivo e fazer a entrega dos dados em um bucket do S3. Então, não vou precisar codificar nada, só preciso criar um stream de entrega do firehouse e definir o bucket. 
+
+Voltei lá na página do Kineses e fui na opção Delivery Stream.
+
+![7](https://github.com/JulioMancini/Projeto-Streaming-KINESIS/assets/145502330/7a52db2b-a352-45df-afc9-fce95279a63c)
+
+Agora ele pede para definir a origem e o destino, na origem (source) selecionei a opção Amazon Kinesis Data Streams. Ou seja, é o stream que já criei anteriormente e possuo um produtor pronto para ele. Como destino selecionei o Bucket do S3.
+
+![8](https://github.com/JulioMancini/Projeto-Streaming-KINESIS/assets/145502330/e5fc660b-6a85-4bf7-9259-71121925d3a5)
+
+Na opção abaixo o Choose Kinesis Data stream, selecionei o stream criado.
+
+![9](https://github.com/JulioMancini/Projeto-Streaming-KINESIS/assets/145502330/4be095f4-86c1-40d2-83a0-c14ab1093261)
+
+
+
